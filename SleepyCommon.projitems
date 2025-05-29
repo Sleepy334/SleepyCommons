@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects Condition="'$(MSBuildVersion)' == '' Or '$(MSBuildVersion)' &lt; '16.0'">$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>c3eb1037-8f93-4eee-ad86-57b0aeb83819</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>SleepyCommon</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Common\CitiesUtils.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Common\CitizenUtils.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Common\Debug.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Common\DependencyUtils.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Common\InstanceHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Common\KnownColor.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Common\Localization.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Common\ResourceLoader.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Common\TextureResources.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Common\Utils.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Common\VehicleTypeHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Core\UserModBase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Settings\ExtUITabStrip.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Settings\SettingsSlider.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Settings\UISettings.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)UI\Prompt.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)UI\UIFonts.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)UI\UIGroup.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)UI\UIInfoLabel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)UI\UIMainPanel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)UI\UIMyDropDown.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)UI\UIMyUtils.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)UI\UITitleBar.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)UI\UIToggleButton.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)UI\UITruncateLabel.cs" />
+  </ItemGroup>
+</Project>
