@@ -160,9 +160,9 @@ namespace SleepyCommon
             return InstanceID.Empty;
         }
 
-        public static List<ushort> GetBuildings(InstanceID instance)
+        public static HashSet<ushort> GetBuildings(InstanceID instance)
         {
-            List<ushort> buildings = new List<ushort>();
+            HashSet<ushort> buildings = new HashSet<ushort>();
 
             if (!instance.IsEmpty)
             {
