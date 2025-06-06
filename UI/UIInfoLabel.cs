@@ -113,12 +113,12 @@ namespace SleepyCommon
                 if (fParentPanelMiddle < fScreenMiddle)
                 {
                     // To the right
-                    newRelativePosition = m_parent.relativePosition + new Vector3(m_parent.width + 10, 0.0f);
+                    newRelativePosition = m_parent.relativePosition + new Vector3(m_parent.width + 6, 0.0f);
                 }
                 else
                 {
                     // To the left
-                    newRelativePosition = m_parent.relativePosition - new Vector3(m_infoLabel.width + 10, 0.0f);
+                    newRelativePosition = m_parent.relativePosition - new Vector3(m_infoLabel.width + 6, 0.0f);
                 }
                 
                 // Check its within screen

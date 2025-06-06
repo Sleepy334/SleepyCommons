@@ -100,6 +100,27 @@ namespace SleepyCommon
             return button;
         }
 
+        public static UIToggleButton? AddToggleButton(ButtonStyle style, UIComponent parent, string sText, string sTooltip, float width, float height, MouseEventHandler? eventClick = null)
+        {
+            UIToggleButton? button = parent.AddUIComponent<UIToggleButton>();
+            if (button is not null)
+            {
+                button.text = sText;
+                button.tooltip = sTooltip;
+                button.autoSize = false;
+                button.width = width;
+                button.height = height;
+                SetButtonStyle(style, button);
+
+                if (eventClick is not null)
+                {
+                    button.eventClick += eventClick;
+                }
+            }
+
+            return button;
+        }
+
         public static UIButton? AddSpriteButton(ButtonStyle style, UIComponent parent, string sSprite, float width, float height, MouseEventHandler? eventClick = null)
         {
             UIButton? button = parent.AddUIComponent<UIButton>();
@@ -173,7 +194,7 @@ namespace SleepyCommon
                 button.autoSize = false;
                 button.width = width;
                 button.height = height;
-                button.ToggleState = bInitalValue;
+                button.StateOn = bInitalValue;
                 SetButtonStyle(style, button);
 
                 if (eventClick is not null)

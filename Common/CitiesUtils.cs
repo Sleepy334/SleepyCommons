@@ -24,19 +24,16 @@ namespace SleepyCommon
                     sName += Singleton<BuildingManager>.instance.GetBuildingName(buildingId, caller);
                     if (string.IsNullOrEmpty(sName))
                     {
-                        sName = "Building: #" + buildingId;
+                        sName = $"Building: #{buildingId}";
                     }
                     else
                     {
+#if DEBUG
+                        bShowId = true;
+#endif 
                         if (bShowId)
                         {
-                            sName = "#" + buildingId + ": " + sName;
-                        }
-                        else
-                        {
-#if DEBUG
-                            sName = "#" + buildingId + ": " + sName;
-#endif
+                            sName = $"#{buildingId}: {sName}";
                         }
                     }
 
@@ -44,7 +41,7 @@ namespace SleepyCommon
                 }
                 else
                 {
-                    sName = "Building: #" + buildingId;
+                    sName = $"Building: #{buildingId}";
                 }
             }
 
@@ -261,11 +258,7 @@ namespace SleepyCommon
                             case VehicleType.PoliceCopter:
                             case VehicleType.BankVan:
                             case VehicleType.GarbageTruck:
-
                             case VehicleType.CargoTruck:
-                            case VehicleType.CargoTrain:
-                            case VehicleType.CargoShip:
-                            case VehicleType.CargoPlane:
                                 {
                                     current = VehicleTypeHelper.GetBufferStatus(vehicleId, out max);
                                     if (current > 0)
@@ -276,6 +269,13 @@ namespace SleepyCommon
                                     {
                                         return "0.0%";
                                     }
+                                }
+                            case VehicleType.CargoTrain:
+                            case VehicleType.CargoShip:
+                            case VehicleType.CargoPlane:
+                                {
+                                    current = VehicleTypeHelper.GetBufferStatus(vehicleId, out max);
+                                    return $"{current} / {max}";
                                 }
                             case VehicleType.CruiseShip:
                             case VehicleType.PassengerPlane:

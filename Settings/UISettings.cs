@@ -18,7 +18,7 @@ namespace SleepyCommon
             desc.wordWrap = true;
             desc.autoHeight = true;
             desc.textScale = fontScale;
-            desc.textColor = Color.grey;
+            desc.textColor = KnownColor.lightGrey;
             desc.text = text;
             desc.relativePosition = new Vector3(alignTo.relativePosition.x + 26f, alignTo.relativePosition.y + alignTo.height + 10);
             return desc;

@@ -1,11 +1,23 @@
 using ColossalFramework.UI;
+using System.Diagnostics;
 using UnityEngine;
 
 namespace SleepyCommon
 {
     public abstract class UIMainPanel<T> : UIPanel where T : UIPanel
     {
+        const long iMIN_UPDATE_DELAY = 200; // ms
+
         private static T? s_mainPanel = null;
+
+        // Panel updating variables
+        private bool m_bUpdatePanel = false;
+        private int m_panelUpdateRateMS = 4000;
+        private long m_lastUdateMilliseconds = 0;
+        private static Stopwatch s_stopwatch = Stopwatch.StartNew();
+
+        // ----------------------------------------------------------------------------------------
+        protected abstract void UpdatePanel();
 
         // ----------------------------------------------------------------------------------------
         public static T Instance
@@ -67,6 +79,18 @@ namespace SleepyCommon
             }
         }
 
+        public int PanelUpdateRate
+        {
+            get
+            {
+                return m_panelUpdateRateMS;
+            }
+            set
+            {
+                m_panelUpdateRateMS = value;
+            }
+        }
+
         public bool HandleEscape()
         {
             if (isVisible)
@@ -75,6 +99,28 @@ namespace SleepyCommon
                 return true;
             }
             return false;
+        }
+
+        public virtual void InvalidatePanel()
+        {
+            m_bUpdatePanel = true;
+        }
+
+        public override void Update()
+        {
+            long elapsedTime = s_stopwatch.ElapsedMilliseconds;
+
+            if ((elapsedTime - m_lastUdateMilliseconds) > iMIN_UPDATE_DELAY && isVisible)
+            {
+                if (m_bUpdatePanel || (PanelUpdateRate > 0 && ((elapsedTime - m_lastUdateMilliseconds) > PanelUpdateRate)))
+                {
+                    UpdatePanel();
+                    m_bUpdatePanel = false;
+                    m_lastUdateMilliseconds = s_stopwatch.ElapsedMilliseconds;
+                }
+            }
+
+            base.Update();
         }
     }
 }

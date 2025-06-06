@@ -56,7 +56,14 @@ namespace SleepyCommon
             }
         }
 
-        public void Setup(string title, UITextureAtlas atlas, MouseEventHandler closeHandler)
+        public static UITitleBar Create(UIPanel parent, string title, string sSpriteName, UITextureAtlas atlas, MouseEventHandler closeHandler)
+        {
+            UITitleBar titleBar = parent.AddUIComponent<UITitleBar>();
+            titleBar.Setup(title, sSpriteName, atlas, closeHandler);    
+            return titleBar;
+        }
+
+        private void Setup(string title, string sSpriteName, UITextureAtlas atlas, MouseEventHandler closeHandler)
         {
             if (parent is not null)
             {
@@ -80,7 +87,7 @@ namespace SleepyCommon
             if (m_icon is not null)
             {
                 m_icon.atlas = atlas;
-                m_icon.spriteName = "BusImageInverted48x48";
+                m_icon.spriteName = sSpriteName;
                 m_icon.autoSize = false;
                 m_icon.width = iBUTTON_HEIGHT - 4;
                 m_icon.height = iBUTTON_HEIGHT - 4;
